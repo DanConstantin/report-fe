@@ -1,0 +1,25 @@
+.footer {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 1rem 3rem;
+
+  .list-title {
+    font-family: "Roboto Bold", sans-serif;
+  }
+
+  .link-footer {
+    color: #dedede;
+    text-decoration: none;
+    font-family: "Roboto Thin", sans-serif;
+    font-size: 0.875rem;
+  }
+
+  .link-footer:hover {
+    text-decoration: underline;
+  }
+
+  .copyright {
+    font-size: 0.75rem
+  }
+}

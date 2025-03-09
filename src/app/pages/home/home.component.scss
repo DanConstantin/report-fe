@@ -1,0 +1,100 @@
+.cover {
+  width: 100%;
+}
+
+.title-cover {
+  font-family: "Roboto Bold", sans-serif;
+  font-size: 3.75rem;
+}
+
+.actions {
+  .btn-link {
+    text-decoration: none;
+    color: #000000;
+    font-family: "Roboto Bold", sans-serif;
+  }
+
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+}
+
+.services-title {
+  font-family: "Roboto Bold", sans-serif;
+  font-size: 2.5rem;
+}
+
+.card-services {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1rem
+}
+
+.card-services:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.card-services-title {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.card-services-info {
+  font-family: "Roboto Thin", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+
+.card-icon {
+  font-size: 2.25rem;
+}
+
+.card-action {
+  font-size: 0.875rem;
+}
+
+.cover2 {
+  width: 100%;
+}
+
+.collapse-title {
+  font-family: "Roboto Bold", sans-serif;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.collapse-icon {
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.collapse-content {
+  b {
+    font-family: "Roboto Bold", sans-serif;
+  }
+}
+
+.about-title {
+  font-family: "Roboto Bold", sans-serif;
+  font-size: 2.5rem;
+}
+
+.about-subtitle {
+  font-family: "Roboto Thin", sans-serif;
+  font-size: 1.25rem;
+}
+
+.video-container {
+  padding: 1rem 4rem;
+
+  .video-container-inner {
+    border-radius: 32px;
+    overflow: hidden;
+  }
+}

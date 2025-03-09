@@ -1,0 +1,84 @@
+<div class="py-5">
+  <form class="card p-3" (ngSubmit)="add()">
+    <div class="title pb-5">Add patient</div>
+    <div class="row" [formGroup]="form">
+      <div class="col-md-6 px-3">
+        <div class="form-group mb-3">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" [ngClass]="{'is-invalid' : form.controls['username'].invalid && form.controls['username'].dirty}" formControlName="username" id="username" placeholder="Enter username">
+          <small class="invalid-feedback">Username needs to be at least 6 characters long.</small>
+        </div>
+        <div class="form-group mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" [ngClass]="{'is-invalid' : form.controls['email'].invalid && form.controls['email'].dirty}" formControlName="email" id="email" placeholder="Enter email">
+          <small class="invalid-feedback">Email needs to be a valid format.</small>
+        </div>
+        <div class="form-group mb-3">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" [ngClass]="{'is-invalid' : form.controls['password'].invalid && form.controls['password'].dirty}" formControlName="password" id="password" placeholder="Enter password">
+          <small class="invalid-feedback">Password needs to be at least 6 characters long.</small>
+        </div>
+        <div class="form-check mb-4 pt-4" >
+          <input type="checkbox" class="form-check-input" formControlName="hasInsurance" id="hasInsurance">
+          <label for="hasInsurance" class="form-check-label">Has insurance</label>
+        </div>
+        <div class="form-group mb-3 pt-2">
+          <label for="allergies">Allergies</label>
+          <textarea type="text" class="form-control" [ngClass]="{'is-invalid' : form.controls['allergies'].invalid && form.controls['allergies'].dirty}" formControlName="allergies" id="allergies" placeholder="Enter allergies"></textarea>
+          <small class="invalid-feedback">Allergies needs to be at least 3 characters long.</small>
+        </div>
+      </div>
+      <div class="col-md-6 px-3">
+        <div class="form-group mb-3">
+          <label for="firstName">Fist name</label>
+          <input type="text" class="form-control" [ngClass]="{'is-invalid' : form.controls['first_name'].invalid && form.controls['first_name'].dirty}" formControlName="first_name" id="firstName" placeholder="Enter first name">
+          <small class="invalid-feedback">First needs to be at least 2 characters long.</small>
+        </div>
+        <div class="form-group mb-3">
+          <label for="lastName">Last name</label>
+          <input type="text" class="form-control" [ngClass]="{'is-invalid' : form.controls['last_name'].invalid && form.controls['last_name'].dirty}" formControlName="last_name" id="lastName" placeholder="Enter last name">
+          <small class="invalid-feedback">Last name needs to be at least 2 characters long.</small>
+        </div>
+        <div class="form-group mb-3">
+          <label for="city">City</label>
+          <input type="text" class="form-control" [ngClass]="{'is-invalid' : form.controls['city'].invalid && form.controls['city'].dirty}" formControlName="city" id="city" placeholder="Enter city">
+          <small class="invalid-feedback">City needs to be at least 3 characters long.</small>
+        </div>
+        <div class="form-group mb-3">
+          <label for="telephone">Telephone</label>
+          <input type="text" class="form-control" [ngClass]="{'is-invalid' : form.controls['telephone'].invalid && form.controls['telephone'].dirty}" formControlName="telephone" id="telephone" placeholder="Enter telephone">
+          <small class="invalid-feedback">Telephone needs to be at least 3 characters long.</small>
+        </div>
+        <div class="form-group mb-3">
+          <label for="dateOfBirth">Date of Birth</label>
+          <div class="input-group">
+            <input
+              class="form-control"
+              placeholder="yyyy-mm-dd"
+              id="dateOfBirth"
+              ngbDatepicker
+              #d="ngbDatepicker"
+              formControlName="dateOfBirth"
+            />
+            <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><fa-icon [icon]="faCalendar"></fa-icon></button>
+          </div>
+          <small class="invalid-feedback">You need to add a date of birth.</small>
+        </div>
+      </div>
+    </div>
+    <div class="row" [formGroup]="form" *ngIf="form">
+      <div class="form-group mb-3">
+        <label for="medications">Medications</label>
+        <textarea type="text" class="form-control" [ngClass]="{'is-invalid' : form.controls['medications'].invalid && form.controls['medications'].dirty}" formControlName="medications" id="medications" placeholder="Enter medications"></textarea>
+        <small class="invalid-feedback">Medications needs to be at least 3 characters long.</small>
+      </div>
+      <div class="form-group mb-3">
+        <label for="previousConditions">Medical History</label>
+        <textarea type="text" class="form-control" [ngClass]="{'is-invalid' : form.controls['previousConditions'].invalid && form.controls['previousConditions'].dirty}" formControlName="previousConditions" id="previousConditions" placeholder="Enter medical history"></textarea>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-3 add-action">
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary mt-4">Add patient</button>
+    </div>
+  </form>
+</div>

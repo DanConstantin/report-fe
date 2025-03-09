@@ -1,0 +1,51 @@
+<header class="py-3">
+  <div class="row flex-nowrap justify-content-between align-items-center">
+    <div class="col-2 pt-1">
+      <a [routerLink]="'/'">
+        <img alt="logo" class="logo" src="/images/logo.png" />
+      </a>
+    </div>
+    <div class="col-8 text-center" *ngIf="!role">
+      <a type="button" href="#services" class="btn btn-link">Services</a>
+      <a type="button" href="#about" class="btn btn-link">About</a>
+      <a type="button" href="#discover" class="btn btn-link">Discover</a>
+    </div>
+    <div class="col-8 text-center" *ngIf="role === Role.MEDIC">
+      <a type="button" [routerLink]="'/medic'" class="btn btn-link">
+        <fa-icon [icon]="faHospital" class="collapse-icon"></fa-icon>
+        Dashboard
+      </a>
+      <a type="button" [routerLink]="'/medic/add-patient'" class="btn btn-link">
+        <fa-icon [icon]="faUser" class="collapse-icon"></fa-icon>
+        Add Patient
+      </a>
+      <a type="button" [routerLink]="'/medic/calendar'" class="btn btn-link">
+        <fa-icon [icon]="faCalendarCheck" class="collapse-icon"></fa-icon>
+        Calendar
+      </a>
+    </div>
+    <div class="col-8 text-center" *ngIf="role === Role.PATIENT">
+      <a type="button" [routerLink]="'/patient'" class="btn btn-link">
+        <fa-icon [icon]="faHospital" class="collapse-icon"></fa-icon>
+        Dashboard
+      </a>
+      <a type="button" [routerLink]="'/patient/records'" class="btn btn-link">
+        <fa-icon [icon]="faClipboard" class="collapse-icon"></fa-icon>
+        My Records
+      </a>
+      <a type="button" [routerLink]="'/patient/appointment'" class="btn btn-link">
+        <fa-icon [icon]="faCalendarPlus" class="collapse-icon"></fa-icon>
+        Book an Appointment
+      </a>
+    </div>
+    <div class="col-2 d-flex justify-content-end align-items-center">
+      <ng-container *ngIf="role; else logoutTemplate">
+        <a [routerLink]="role === Role.PATIENT ? '/patient/profile' : '/medic/profile'" type="button" class="btn btn-link me-2">Profile</a>
+        <a (click)="logout()" type="button" class="btn btn-primary">Logout</a>
+      </ng-container>
+      <ng-template #logoutTemplate>
+        <a [routerLink]="'/login'" type="button" class="btn btn-primary">Login</a>
+      </ng-template>
+    </div>
+  </div>
+</header>

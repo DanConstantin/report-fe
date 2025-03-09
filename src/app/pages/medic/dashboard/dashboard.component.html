@@ -1,0 +1,20 @@
+<div class="py-5">
+  <div class="card p-3">
+    <img src="/images/list.svg" height="200"/>
+    <div class="title pt-3 pb-3">Next 5 Days Consultations</div>
+    <ag-grid-angular
+      [rowData]="nextBookings"
+      [autoSizeStrategy]="autoSizeStrategy"
+      domLayout='autoHeight'
+      class="ag-theme-quartz-dark"
+      [columnDefs]="colDefs" />
+    <div class="title pt-5 pb-3">All Consultations</div>
+    <ag-grid-angular
+      [rowData]="allBookings"
+      [autoSizeStrategy]="autoSizeStrategy"
+      [pagination]="true"
+      class="ag-theme-quartz-dark"
+      style="height: 500px;"
+      [columnDefs]="colDefsAll" />
+  </div>
+</div>

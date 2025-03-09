@@ -1,0 +1,17 @@
+<div class="py-5">
+  <div class="card p-3">
+    <img src="/images/list.svg" height="200"/>
+    <div class="title pt-3 pb-3">Hi {{name}}!</div>
+    <div *ngIf="nextBooking">
+      Your next booking is on <b>{{nextBooking.timestamp}}</b> with Doctor <b>{{nextBooking.doctor?.last_name}} {{nextBooking.doctor?.first_name}}</b>. For more information, you can contact your doctor directly at {{nextBooking.doctor?.telephone}} or {{nextBooking.doctor?.email}}.
+    </div>
+    <div *ngIf="!nextBooking">Currently you do not have an upcoming appointment. You can use the navigation menu to book an appointment or you can check below past appointments and results.</div>
+    <div class="title pt-5 pb-3">All Consultations</div>
+    <ag-grid-angular
+      [rowData]="allBookings"
+      [autoSizeStrategy]="autoSizeStrategy"
+      class="ag-theme-quartz-dark"
+      domLayout='autoHeight'
+      [columnDefs]="colDefs" />
+  </div>
+</div>

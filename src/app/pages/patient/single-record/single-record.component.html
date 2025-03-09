@@ -1,0 +1,33 @@
+<div class="py-5">
+  <div class="card p-3">
+    <img src="/images/single-record.svg" height="200"/>
+    <div class="title pt-3 pb-3">Record</div>
+    <div class="card-body" *ngIf="booking">
+      <h4 class="card-title d-flex align-items-center">Appointment on {{booking.timestamp}}</h4>
+      <h6 class="card-subtitle mb-3 text-muted">with Doctor {{booking.doctor?.first_name}} {{booking.doctor?.last_name}}</h6>
+      <p class="card-text"><b>Request:</b> {{booking.requestDescription}}</p>
+      <p class="card-text" *ngIf="booking.diagnosisDescription"><b>Diagnosis:</b> {{booking.diagnosisDescription}}</p>
+      <p class="card-text" *ngIf="!booking.diagnosisDescription"><b>Diagnosis:</b> <i>To be determined</i></p>
+      <div class="card mt-4">
+        <div class="card-body row">
+          <div class="col-md-6">
+            <h5 class="card-title mb-4">Your doctor details</h5>
+            <p class="card-text"><b>Full name:</b> {{booking.doctor?.first_name}} {{booking.doctor?.last_name}}</p>
+            <p class="card-text"><b>Specialization:</b> {{booking.doctor?.specialization}}</p>
+            <p class="card-text"><b>Email:</b> {{booking.doctor?.email}}</p>
+            <p class="card-text"><b>Phone:</b> {{booking.doctor?.telephone}}</p>
+            <p class="card-text mb-3"><b>City:</b> {{booking.doctor?.city}}</p>
+          </div>
+          <div class="col-md-6">
+            <h5 class="card-title mb-4">MRI Image and AI Diagnostic</h5>
+            <div class="mri-image mb-3">
+              <span class="placeholder col-12" *ngIf="!booking.mriUploaded"></span>
+              <img *ngIf="booking.mriUploaded" [src]="environment.mediaUrl + booking.mriUploaded" />
+            </div>
+            <div class="card-text mb-3">AI prediction: <b>{{booking.aiPrediction || 'No MRI uploaded'}}</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

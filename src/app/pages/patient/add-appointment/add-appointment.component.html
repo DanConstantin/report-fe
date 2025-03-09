@@ -1,0 +1,39 @@
+<div class="py-5">
+  <div class="card p-3" [formGroup]="form" (ngSubmit)="saveAppointment()">
+    <img src="/images/add-appointment.svg" height="200"/>
+    <div class="title pt-3 pb-3">Add Appointment</div>
+    <div class="row">
+      <div class="form-group mb-3 pt-2">
+        <label for="request">Request description</label>
+        <textarea type="text" class="form-control" [ngClass]="{'is-invalid' : form.controls['requestDescription'].invalid && form.controls['requestDescription'].dirty}" formControlName="requestDescription" id="request" placeholder="Enter request description"></textarea>
+        <small class="invalid-feedback">Request descriptions needs to be at least 20 characters long.</small>
+      </div>
+      <div class="form-group mb-3">
+        <label for="date">Date of appointment</label>
+        <div class="input-group">
+          <input
+            [minDate]="minDate"
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            id="date"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            formControlName="date"
+          />
+          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><fa-icon [icon]="faCalendar"></fa-icon></button>
+        </div>
+        <small class="invalid-feedback">You need to add a date for appointment.</small>
+      </div>
+      <div class="form-group mb-3">
+        <label for="date">Time of appointment</label>
+        <div class="input-group">
+          <ngb-timepicker formControlName="time" />
+        </div>
+        <small class="invalid-feedback">You need to add a time for appointment.</small>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-3 add-action">
+      <button type="submit" (click)="saveAppointment()" [disabled]="!form.valid" class="btn btn-primary mt-4">Save appointment</button>
+    </div>
+  </div>
+</div>

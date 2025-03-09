@@ -1,0 +1,53 @@
+<div class="py-5">
+  <div class="card p-3">
+    <img src="/images/single-record.svg" height="200"/>
+    <div class="title pt-3 pb-3">Record</div>
+    <div class="card-body" *ngIf="booking">
+      <h4 class="card-title d-flex align-items-center">Appointment on {{booking.timestamp}}</h4>
+      <h6 class="card-subtitle mb-3 text-muted">with Patient {{booking.patient.first_name}} {{booking.patient.last_name}}</h6>
+      <p class="card-text"><b>Request:</b> {{booking.requestDescription}}</p>
+      <p class="card-text" *ngIf="!editActive">
+        <b>Diagnosis: </b>
+        <i *ngIf="!booking.diagnosisDescription">To be determined</i>
+        <span *ngIf="booking.diagnosisDescription">{{booking.diagnosisDescription}}</span>
+      </p>
+      <p class="card-text" *ngIf="editActive">
+        <b>Diagnosis:</b>
+        <textarea type="text" class="form-control" [(ngModel)]="booking.diagnosisDescription" id="request" placeholder="Enter diagnostic"></textarea>
+      </p>
+      <a type="button" class="btn btn-primary" *ngIf="!editActive" (click)="editActive = !editActive">Edit Diagnostic</a>
+      <a type="button" class="btn btn-primary" *ngIf="editActive" (click)="saveDiagnostic()">Save Diagnostic</a>
+      <div class="card mt-4">
+        <div class="card-body row">
+          <div class="col-md-6">
+            <h5 class="card-title mb-4">Your patient details</h5>
+            <p class="card-text"><b>Full name:</b> {{booking.patient.first_name}} {{booking.patient.last_name}}</p>
+            <p class="card-text"><b>Date of Birth:</b> {{booking.patient.dateOfBirth}}</p>
+            <p class="card-text"><b>Email:</b> {{booking.patient.email}}</p>
+            <p class="card-text"><b>Phone:</b> {{booking.patient.telephone}}</p>
+            <p class="card-text mb-3"><b>City:</b> {{booking.patient.city}}</p>
+            <p class="card-text mb-3"><b>Medications:</b> {{booking.patient.medications}}</p>
+            <p class="card-text mb-3"><b>Previous Conditions:</b> {{booking.patient.previousConditions}}</p>
+            <p class="card-text mb-3"><b>Allergies:</b> {{booking.patient.allergies}}</p>
+            <p class="card-text mb-3"><b>Has Insurance:</b> {{booking.patient.hasInsurance ? 'Yes' : 'No'}}</p>
+          </div>
+          <div class="col-md-6">
+            <h5 class="card-title mb-4">MRI Image and AI Diagnostic</h5>
+            <div class="mri-image mb-3" *ngIf="!previewImage">
+              <span class="placeholder col-12" *ngIf="!booking.mriUploaded"></span>
+              <img *ngIf="booking.mriUploaded" [src]="environment.mediaUrl + booking.mriUploaded" />
+            </div>
+            <div class="mri-image mb-3" *ngIf="previewImage">
+              <img [src]="previewImage" />
+            </div>
+            <div class="card-text mb-3" *ngIf="!loadingPredicton">AI prediction: <b>{{booking.aiPrediction || 'No MRI uploaded'}}</b></div>
+            <div class="card-text mb-3" *ngIf="loadingPredicton">AI prediction: <b>Loading...</b></div>
+            <a type="button" class="btn btn-primary" (click)="image.click()">Upload and run diagnosis</a>
+            <input type="file" class="form-control" hidden #image accept="image/png, image/jpeg" [disabled]="loadingPredicton"
+                   (change)="upload($event)">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

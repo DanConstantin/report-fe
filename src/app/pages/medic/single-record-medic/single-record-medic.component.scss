@@ -1,0 +1,13 @@
+.mri-image {
+  height: 300px;
+
+  .placeholder {
+    height: 100%;
+    cursor: default;
+  }
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+}

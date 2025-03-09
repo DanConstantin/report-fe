@@ -1,0 +1,98 @@
+<div class="row py-3">
+  <div class="col-md-6">
+    <div class="title-cover pt-3">Professional <br/> Medical<br/> Solutions</div>
+    <div> with the help of Artificial Intelligence and our professional researchers</div>
+    <div class="d-flex align-items-center actions mt-3">
+      <a type="button" class="btn btn-secondary btn-lg my-3" [routerLink]="'/trial'">Book an appointment</a>
+      <a type="button" class="btn btn-link" [routerLink]="'/trial'">JOIN US</a>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <img alt="cover" class="cover" src="/images/cover.svg" />
+  </div>
+</div>
+<div class="row py-4" id="services">
+  <div class="services-title pb-3">Services</div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card-services">
+        <div><fa-icon [icon]="faBullseye" class="card-icon"></fa-icon></div>
+        <div class="card-services-title">Accurate and Efficient Diagnosis</div>
+        <div class="card-services-info">Our advanced AI technology provides rapid and precise diagnoses of brain tumors, helping healthcare professionals make informed treatment decisions.</div>
+        <div>
+          <a type="button" class="btn btn-primary card-action" [routerLink]="'/trial'">LEARN MORE</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-services">
+        <div><fa-icon [icon]="faClock" class="card-icon"></fa-icon></div>
+        <div class="card-services-title">Early Detection and Prevention</div>
+        <div class="card-services-info">Our platform is designed to identify early-stage tumors, enabling timely intervention and potentially improving patient outcomes.</div>
+        <div>
+          <a type="button" class="btn btn-primary card-action" [routerLink]="'/trial'">LEARN MORE</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-services">
+        <div><fa-icon [icon]="faCapsules" class="card-icon"></fa-icon></div>
+        <div class="card-services-title">Personalized Treatment Plans</div>
+        <div class="card-services-info">By analyzing patient data and tumor characteristics, our AI can assist in developing personalized treatment plans tailored to individual needs.</div>
+        <div>
+          <a type="button" class="btn btn-primary card-action" [routerLink]="'/trial'">LEARN MORE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row p-4" id="about">
+  <div class="col-md-4">
+    <img alt="cover" class="cover2" src="/images/cover2.svg" />
+  </div>
+  <div class="col-md-8">
+    <div class="about-title">About MRI AI Results</div>
+    <div class="about-subtitle">Leading the Way in Brain Tumor Diagnosis</div>
+    <hr/>
+    <div class="collapse-container">
+      <div class="collapse-title">
+        <div>Our Vision</div>
+        <fa-icon [icon]="sections[0] ? faPlus : faMinus" class="collapse-icon" (click)="collapse(0)"></fa-icon>
+      </div>
+      <div [(ngbCollapse)]="sections[0]" class="collapse-content">
+        <b>Revolutionizing Brain Tumor Diagnosis with AI.</b> Our vision is to empower healthcare professionals with an innovative AI-powered tool that delivers accurate and timely diagnoses of brain tumors, leading to improved patient outcomes and revolutionizing the field of neuro-oncology.
+      </div>
+    </div>
+    <hr/>
+    <div class="collapse-container">
+      <div class="collapse-title">
+        <div>Our Approach</div>
+        <fa-icon [icon]="sections[1] ? faPlus : faMinus" class="collapse-icon" (click)="collapse(1)"></fa-icon>
+      </div>
+      <div [(ngbCollapse)]="sections[1]" class="collapse-content">
+        <b>Cutting-Edge Deep Learning Technology.</b> Our approach leverages state-of-the-art deep learning algorithms to analyze MRI images, identifying and classifying brain tumors with exceptional accuracy. Our model is trained on a vast dataset of annotated brain scans, ensuring its reliability and effectiveness in real-world clinical settings.
+      </div>
+    </div>
+    <hr/>
+    <div class="collapse-container">
+      <div class="collapse-title">
+        <div>Our Values</div>
+        <fa-icon [icon]="sections[2] ? faPlus : faMinus" class="collapse-icon" (click)="collapse(2)"></fa-icon>
+      </div>
+      <div [(ngbCollapse)]="sections[2]" class="collapse-content">
+        <b>Patient-Centricity, Innovation, and Excellence.</b> We are committed to putting patients at the heart of everything we do. Our values drive us to continually innovate and strive for excellence in our work, ensuring that our AI tool makes a meaningful difference in the lives of those affected by brain tumors.
+      </div>
+    </div>
+    <hr/>
+  </div>
+</div>
+<div class="row" id="discover">
+  <div class="services-title pb-3">Discover</div>
+  <div>Discover how cutting-edge AI technology is revolutionizing the detection and diagnosis of brain tumors. Learn about the benefits of AI-assisted diagnosis, including improved accuracy, faster turnaround times, and personalized treatment plans.</div>
+  <div class="video-container">
+    <div #youTubePlayer class="video-container-inner">
+      <youtube-player [videoId]="videoId" [width]="videoWidth"
+                      [height]="videoHeight"/>
+    </div>
+  </div>
+</div>
