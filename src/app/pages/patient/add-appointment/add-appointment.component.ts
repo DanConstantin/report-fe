@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {faCalendar} from '@fortawesome/free-solid-svg-icons';
+import {PatientService} from '../../../core/services/patient.service';
+import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
+import {ToastService} from '../../../core/services/toast.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-add-appointment',
   templateUrl: './add-appointment.component.html',
@@ -19,7 +23,20 @@ export class AddAppointmentComponent {
     time: new FormControl(null, [Validators.required]),
   })
 
+  constructor(private patientService: PatientService, private toastService: ToastService) {
+  }
+
   saveAppointment() {
-    console.log(this.form.value);
+    const value = this.form.value;
+    this.patientService.addBooking({...value, date: `${value.date.year}-${value.date.month}-${value.date.day}`,
+      time: `${value.time.hour.toString().padStart(2, '0')}:${value.time.minute.toString().padStart(2, '0')}`}).pipe(untilDestroyed(this))
+      .subscribe(() => {
+        this.toastService.show({
+          message: "Booking added successfully",
+          classname: 'bg-success text-light',
+          delay: 5000
+        });
+        this.form.reset();
+      });
   }
 }

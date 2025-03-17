@@ -17,4 +17,8 @@ export class PatientService {
   public getBooking(id: string) {
     return this.http.get<Booking>(`${environment.apiUrl}bookings/${id}/`);
   }
+
+  public addBooking(form: any) {
+    return this.http.post<Booking>(`${environment.apiUrl}create-booking/`, form);
+  }
 }
